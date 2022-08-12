@@ -1,6 +1,8 @@
+
 import pygame
 from pygame.locals import *
 import random
+import time
 
 size = width, height = (800, 800)
 road_w = int(width/1.6)
@@ -29,6 +31,9 @@ car2 = pygame.image.load("otherCar.png")
 car2_loc = car2.get_rect()
 car2_loc.center = left_lane, height*0.2
 
+
+
+
 counter = 0
 rout = 0
 
@@ -41,7 +46,7 @@ while running:
     if counter == 4000:
         speed += 0.15
         counter = 0
-        print("level up", speed)
+        print("level Reached  :", speed)
 
     
     car2_loc[1] += speed
@@ -53,7 +58,10 @@ while running:
             car2_loc.center = left_lane, -200
 
     
+
+    
     if car_loc[0] == car2_loc[0] and car2_loc[1] > car_loc[1] - 250:
+        time.sleep(2)
         print("GAME OVER! YOU LOST!")
         break
 
@@ -96,6 +104,7 @@ while running:
    
     screen.blit(car, car_loc)
     screen.blit(car2, car2_loc)
+    
     
     pygame.display.update()
 
